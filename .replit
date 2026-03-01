@@ -1,0 +1,40 @@
+# 1. Main Run Command
+run = "npx concurrently \"uvicorn main:app --host 0.0.0.0 --port 8000\" \"npm run dev\""
+
+entrypoint = "main.py"
+modules = ["python-3.11", "nodejs-20"]
+audio = true
+hidden = [".config", "package-lock.json", ".pythonlibs", "__pycache__", ".next"]
+
+[nix]
+channel = "stable-24_11"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 8000
+externalPort = 8000
+
+[deployment]
+run = ["npx", "concurrently", "uvicorn main:app --host 0.0.0.0 --port 8000", "npm run start"]
+deploymentTarget = "autoscale"
+
+[workflows]
+runButton = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx concurrently \"uvicorn main:app --host 0.0.0.0 --port 8000\" \"npm run dev\""
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[agent]
+expertMode = true
