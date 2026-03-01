@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   async rewrites() {
     return [
       {
@@ -11,4 +12,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig; // This is the "ES Module" way to export
