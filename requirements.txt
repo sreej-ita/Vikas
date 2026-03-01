@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+motor
+groq
+elevenlabs
+resend
+httpx
+twilio
+python-multipart
