@@ -6,7 +6,7 @@ const nextConfig = {
       {
         // When frontend calls /api/..., it sends it to the Python server
         source: "/api/:path*",
-        destination: "http://0.0.0.0:8000/api/:path*",
+        destination: "http://127.0.0.1:8000/api/:path*",
       },
     ];
   },
