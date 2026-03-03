@@ -17,6 +17,7 @@ import io
 import resend
 import httpx
 from twilio.rest import Client as TwilioClient
+import uvicorn
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ENVIRONMENT VARIABLE VALIDATION
@@ -1340,3 +1341,6 @@ Rules:
     except Exception as e:
         print(f"NEARBY-CENTERS ERROR: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
