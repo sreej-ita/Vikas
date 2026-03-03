@@ -5,11 +5,8 @@
   "description": "Voice-to-Action AI for Rural Empowerment",
   "main": "index.js",
   "scripts": {
-    "dev": "next dev -p 3000",
     "build": "next build",
-    "start": "concurrently \"node .next/standalone/server.js\" \"python3 -m uvicorn main:app --host 0.0.0.0 --port 8000\"",
-    "server": "uvicorn main:app --host 0.0.0.0 --port 8000",
-    "both": "concurrently \"npm run server\" \"npm run dev\""
+    "start": "concurrently \"node .next/standalone/server.js\" \"python3 -m uvicorn main:app --host 0.0.0.0 --port 8000\""
   },
   "dependencies": {
     "concurrently": "^8.2.0",
